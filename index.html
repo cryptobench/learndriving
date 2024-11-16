@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Revolution Coming Soon</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Inter", sans-serif;
+            }
+
+            body {
+                background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+            }
+
+            .container {
+                max-width: 1200px;
+                padding: 2rem;
+                text-align: center;
+            }
+
+            .title {
+                font-size: 4rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                position: relative;
+                letter-spacing: 0.1em;
+                color: #ffffff;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+                transition: all 0.3s ease;
+            }
+
+            .title:hover {
+                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+            }
+
+            .subtitle {
+                font-size: 1.5rem;
+                margin-top: 1rem;
+                color: #808080;
+                font-weight: 300;
+            }
+
+            .countdown {
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 3rem;
+            }
+
+            .countdown-item {
+                background: rgba(255, 255, 255, 0.05);
+                padding: 2rem;
+                border-radius: 0.5rem;
+                min-width: 150px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .countdown-item:hover {
+                transform: translateY(-5px);
+                background: rgba(255, 255, 255, 0.08);
+            }
+
+            .countdown-number {
+                font-size: 3rem;
+                font-weight: bold;
+                color: #ffffff;
+            }
+
+            .countdown-label {
+                font-size: 1rem;
+                color: #808080;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                margin-top: 0.5rem;
+            }
+
+            @media (max-width: 768px) {
+                .title {
+                    font-size: 2.5rem;
+                }
+                .countdown {
+                    flex-direction: column;
+                    gap: 1rem;
+                }
+                .countdown-item {
+                    min-width: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">The Revolution Begins</h1>
+            <p class="subtitle">Something extraordinary is coming to your journey.</p>
+
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Set the date we're counting down to (1 month from now)
+            const countDownDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).getTime()
+
+            // Update the countdown every 1 second
+            const x = setInterval(function () {
+                const now = new Date().getTime()
+                const distance = countDownDate - now
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24))
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000)
+
+                document.getElementById("days").innerHTML = days.toString().padStart(2, "0")
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, "0")
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, "0")
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, "0")
+
+                if (distance < 0) {
+                    clearInterval(x)
+                    document.getElementById("countdown").innerHTML = "LAUNCHED"
+                }
+            }, 1000)
+        </script>
+    </body>
+</html>
