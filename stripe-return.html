@@ -46,24 +46,12 @@
                 background-color: #0052cc;
             }
         </style>
-        <script>
-            window.onload = function () {
-                // Try to open the app immediately
-                window.location.href = "startkoerekort://(app)/onboarding"
-
-                // If after 2 seconds we're still here, show the manual button
-                // (this means the app might not be installed)
-                setTimeout(function () {
-                    document.getElementById("manual-button").style.display = "inline-block"
-                }, 2000)
-            }
-        </script>
     </head>
     <body>
         <div class="container">
             <h1>Return to StartKørekort</h1>
-            <p>Redirecting you back to the app...</p>
-            <a id="manual-button" href="startkoerekort://(app)/onboarding" class="button" style="display: none"> Return to App Manually </a>
+            <p>Click the button below to return to the app.</p>
+            <a href="startkoerekort://(app)/onboarding" class="button">Return to App</a>
         </div>
     </body>
 </html>
